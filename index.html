@@ -20,7 +20,8 @@
 }
 
 </style>
-<svg width="960" height="500"></svg>
+<div id = "viz"></div>
+<!-- <svg width="960" height="500"></svg> -->
 <script id="grid" type="text/plain">
                               ME
                WI          VT NH
@@ -47,9 +48,12 @@ d3.select("#grid").text().split("\n").forEach(function(line, i) {
   });
 });
 
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+var height = 600,
+    width = 1000;
+
+var svg = d3.select("#viz").append("svg")
+    .attr("height", height)
+    .attr("width", width);
 
 var gridWidth = d3.max(states, function(d) { return d.x; }) + 1,
     gridHeight = d3.max(states, function(d) { return d.y; }) + 1,
